@@ -1,0 +1,31 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+  role: string;
+  image?: string;
+}
+
+const { quote, author, role, image } = Astro.props;
+---
+
+<div class="bg-card rounded-xl p-8 border border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
+  <div class="flex items-start mb-4">
+    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.716-5-7-5-2.268 0-4 .75-4 4v13c0 1.25 2.75 5 4 5z"></path>
+    </svg>
+    <svg class="w-5 h-5 text-primary ml-2" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M15 21h4c1.25 0 2.75-1 2.75-4v-13c0-4-2.75-5-4-5-2.268 0-7 4-7 5v13c0 7 4 8 8 8z"></path>
+    </svg>
+  </div>
+  <p class="text-foreground mb-6 italic">{quote}</p>
+  <div class="flex items-center">
+    {image && (
+      <img src={image} alt={author} class="w-12 h-12 rounded-full mr-4 object-cover" />
+    )}
+    <div>
+      <p class="font-semibold text-foreground">{author}</p>
+      <p class="text-sm text-muted-foreground">{role}</p>
+    </div>
+  </div>
+</div>

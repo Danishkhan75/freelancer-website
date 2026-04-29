@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro'
+import LoginForm from '../components/auth/LoginForm'
+---
+
+<Layout title="Login - Freelancer Platform">
+  <main class="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-md">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h1>
+        <p class="text-slate-600 mb-8">Sign in to your account to continue</p>
+
+        <LoginForm client:load />
+
+        <p class="text-center text-slate-600 text-sm mt-6">
+          Don't have an account?
+          <a href="/signup" class="text-primary hover:underline font-semibold">Sign up here</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @import "../styles/global.css";
+</style>

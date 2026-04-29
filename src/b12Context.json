@@ -1,0 +1,10 @@
+{
+  "recaptcha_version": 3,
+  "client_uid": "lbWYvdZ4",
+  "product_url": "https://b12.io",
+  "debug": false,
+  "preview_frame_script": "...",
+  "website_url": "https://freelancer-website-zxt2-staging.b12sites.com",
+  "is_preview": true,
+  "favicon": "/favicon.ico"
+}

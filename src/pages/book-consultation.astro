@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const timeSlots = [
+  '09:00 AM', '10:00 AM', '11:00 AM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM'
+];
+
+const consultationTypes = [
+  {
+    title: 'Initial Consultation',
+    duration: '30 minutes',
+    price: 'Free',
+    description: 'Perfect for understanding your project needs and discussing possibilities.'
+  },
+  {
+    title: 'Strategy Session',
+    duration: '1 hour',
+    price: '₹2,500',
+    description: 'In-depth discussion about your project strategy and implementation approach.'
+  },
+  {
+    title: 'Technical Deep-Dive',
+    duration: '1.5 hours',
+    price: '₹4,500',
+    description: 'Detailed technical discussion for complex projects and integrations.'
+  },
+  {
+    title: 'Team Workshop',
+    duration: '2 hours',
+    price: '₹7,500',
+    description: 'Ideal for teams wanting to align on project vision and goals.'
+  }
+];
+---
+
+<Layout title="Book Consultation - Schedule Your Meeting" description="Schedule a consultation with our freelancer to discuss your project needs.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 bg-gradient-to-br from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Book Your Consultation
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Let's discuss your project and how we can help bring your vision to life.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Types -->
+  <section id="consultation-types" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Consultation Types
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Choose the perfect consultation for your needs
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {consultationTypes.map((consultation) => (
+          <div class="bg-card rounded-lg border border-border p-6 hover:shadow-lg hover:border-primary transition-all duration-300">
+            <h3 class="text-xl font-bold text-foreground mb-2">{consultation.title}</h3>
+            <div class="text-3xl font-bold text-primary mb-2">{consultation.price}</div>
+            <div class="text-sm text-muted-foreground mb-4">
+              ⏱️ {consultation.duration}
+            </div>
+            <p class="text-muted-foreground mb-4">{consultation.description}</p>
+            <a href="#booking-form" class="inline-flex items-center text-primary font-semibold hover:translate-x-1 transition-transform">
+              Select →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section id="booking-form" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Book Your Slot
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Fill in the details below and select your preferred date and time
+        </p>
+      </div>
+
+      <form class="space-y-6">
+        <!-- Name -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Full Name *</label>
+          <input
+            type="text"
+            required
+            placeholder="Your full name"
+            class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Email Address *</label>
+          <input
+            type="email"
+            required
+            placeholder="your@email.com"
+            class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Phone Number *</label>
+          <input
+            type="tel"
+            required
+            placeholder="+91 XXXXXXXXXX"
+            class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <!-- Consultation Type -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Consultation Type *</label>
+          <select
+            required
+            class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <option value="">Select a consultation type</option>
+            {consultationTypes.map((type) => (
+              <option value={type.title}>{type.title} - {type.price}</option>
+            ))}
+          </select>
+        </div>
+
+        <!-- Preferred Date -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Preferred Date *</label>
+          <input
+            type="date"
+            required
+            class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
+
+        <!-- Time Slot -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-4">Preferred Time *</label>
+          <div class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+            {timeSlots.map((slot) => (
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="time"
+                  value={slot}
+                  required
+                  class="w-4 h-4 cursor-pointer"
+                />
+                <span class="text-sm text-foreground">{slot}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <!-- Project Details -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Project Details / Brief</label>
+          <textarea
+            placeholder="Tell me about your project, goals, and any specific requirements..."
+            rows="5"
+            class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Budget Range -->
+        <div>
+          <label class="block text-sm font-semibold text-foreground mb-2">Budget Range</label>
+          <select class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+            <option value="">Select a budget range</option>
+            <option value="10000-25000">₹10,000 - ₹25,000</option>
+            <option value="25000-50000">₹25,000 - ₹50,000</option>
+            <option value="50000-100000">₹50,000 - ₹1,00,000</option>
+            <option value="100000+">₹1,00,000+</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5"
+        >
+          Confirm Consultation
+        </button>
+
+        <p class="text-xs text-muted-foreground text-center">
+          I'll send you a confirmation email with the Zoom link and details within 24 hours.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Why Book With Me -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Why Book a Consultation?
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-card rounded-lg p-6 border border-border">
+          <div class="text-4xl mb-4">💡</div>
+          <h3 class="text-xl font-bold text-foreground mb-3">Expert Guidance</h3>
+          <p class="text-muted-foreground">
+            Get personalized advice tailored to your specific project needs and goals.
+          </p>
+        </div>
+
+        <div class="bg-card rounded-lg p-6 border border-border">
+          <div class="text-4xl mb-4">📋</div>
+          <h3 class="text-xl font-bold text-foreground mb-3">Clear Strategy</h3>
+          <p class="text-muted-foreground">
+            Develop a clear roadmap and action plan for your project with realistic timelines.
+          </p>
+        </div>
+
+        <div class="bg-card rounded-lg p-6 border border-border">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="text-xl font-bold text-foreground mb-3">Build Trust</h3>
+          <p class="text-muted-foreground">
+            Get to know each other and establish a strong foundation for working together.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

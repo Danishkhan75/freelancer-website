@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  { category: 'Design', items: ['UI/UX Design', 'Web Design', 'Branding', 'Logo Design', 'Wireframing'] },
+  { category: 'Development', items: ['Frontend Development', 'Responsive Design', 'Web Performance', 'SEO Optimization', 'E-Commerce'] },
+  { category: 'Strategy', items: ['Brand Strategy', 'User Research', 'Market Analysis', 'Digital Marketing', 'Consulting'] },
+];
+
+const experience = [
+  { year: '2018-Present', title: 'Freelance Designer & Developer', description: 'Working with startups and enterprises to create digital solutions' },
+  { year: '2016-2018', title: 'Senior Designer', description: 'Led design team at digital agency, managed client projects' },
+  { year: '2014-2016', title: 'Web Designer', description: 'Designed and developed websites for various clients' },
+  { year: '2012-2014', title: 'Junior Designer', description: 'Started career in design, learned fundamentals' },
+];
+---
+
+<Layout title="About Me - Professional Freelancer" description="Learn more about my background, experience, and approach to freelance work.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
+          About Our Team
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Meet Danish Khan, Md Maruf Alam, and Jaya Singh - three passionate freelancers committed to creating beautiful, functional digital experiences that drive business growth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section id="mission" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-foreground">Our Mission</h2>
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            Our mission is to help businesses and entrepreneurs create digital experiences that not only look beautiful but also drive measurable results. We believe in combining strategic thinking with creative excellence to deliver solutions that exceed expectations.
+          </p>
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            As B.Tech students from Lovely Professional University (currently in 2nd year), we bring fresh perspectives and cutting-edge knowledge to every project. Our team combines experience with innovation to deliver exceptional results.
+          </p>
+          <div class="grid grid-cols-3 gap-6 pt-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-2">2+</div>
+              <p class="text-sm text-muted-foreground">Years Experience</p>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-2">30+</div>
+              <p class="text-sm text-muted-foreground">Projects Completed</p>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary mb-2">100%</div>
+              <p class="text-sm text-muted-foreground">Client Satisfaction</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-12 space-y-8">
+          <h3 class="text-2xl font-bold text-foreground">Core Values</h3>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 pt-1">
+                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-foreground mb-1">Excellence</h4>
+                <p class="text-muted-foreground text-sm">Delivering quality work that exceeds expectations</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 pt-1">
+                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-foreground mb-1">Collaboration</h4>
+                <p class="text-muted-foreground text-sm">Working as true partners with my clients</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 pt-1">
+                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-foreground mb-1">Innovation</h4>
+                <p class="text-muted-foreground text-sm">Staying updated with latest trends and technologies</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 pt-1">
+                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-foreground mb-1">Integrity</h4>
+                <p class="text-muted-foreground text-sm">Being transparent and honest in all dealings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Skills & Expertise</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          A comprehensive set of skills across design, development, and strategy
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {skills.map((skillGroup) => (
+          <div class="bg-card rounded-xl border border-border p-8 space-y-6">
+            <h3 class="text-xl font-bold text-foreground">{skillGroup.category}</h3>
+            <ul class="space-y-3">
+              {skillGroup.items.map((skill) => (
+                <li class="flex items-center gap-3">
+                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-foreground">{skill}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Journey</h2>
+      </div>
+
+      <div class="space-y-8">
+        {experience.map((exp, index) => (
+          <div class="flex gap-8 pb-8 border-b border-border last:border-b-0 last:pb-0">
+            <div class="flex-shrink-0">
+              <div class="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 border-2 border-primary">
+                <span class="text-primary font-bold text-lg">{index + 1}</span>
+              </div>
+            </div>
+            <div class="flex-1">
+              <p class="text-primary font-semibold text-sm">{exp.year}</p>
+              <h3 class="text-lg font-bold text-foreground mt-1">{exp.title}</h3>
+              <p class="text-muted-foreground mt-2">{exp.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta" class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to collaborate with us?</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Let's discuss how we can help bring your vision to life. Get in touch today to start your project.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5">
+          Start Your Project
+        </a>
+        <a href="/pricing" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+          View Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

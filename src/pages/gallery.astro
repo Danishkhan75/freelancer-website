@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PortfolioFilter from '../components/PortfolioFilter.tsx';
+
+const portfolioProjects = [
+  {
+    title: 'Web Design Showcase',
+    description: 'Modern responsive website with beautiful UI and smooth interactions',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/00019078-3375-11f1-8f8c-0242ac110002-hfc50Oj5gy0IBAPvOl6q6.jpg',
+    tags: ['Web Design', 'Responsive', 'UI/UX']
+  },
+  {
+    title: 'Mobile App Interface',
+    description: 'User-friendly mobile application with modern design principles',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/fffffcfc-3374-11f1-9580-0242ac110002-JTYsMUOQgNScB58J7NKzu.jpg',
+    tags: ['UI/UX', 'Mobile', 'Design']
+  },
+  {
+    title: 'Brand Identity System',
+    description: 'Complete branding package including logo, colors, and guidelines',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/00049766-3375-11f1-9fb4-0242ac110002-DHkihYYf-dJQPVNf9kevW.jpg',
+    tags: ['Branding', 'Identity', 'Design']
+  },
+  {
+    title: 'Digital Marketing Campaign',
+    description: 'Creative social media graphics and advertising materials',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/0008df96-3375-11f1-9284-0242ac110002-bej5goQIk_8S8w4w9IaiN.jpg',
+    tags: ['Marketing', 'Social Media', 'Graphics']
+  },
+  {
+    title: 'E-Commerce Design',
+    description: 'Full-featured online store with product catalog and checkout',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/92611961-3372-11f1-983f-0242ac110002-YnryQJ_MK5A1pJYuDXPB4.jpg',
+    tags: ['Web Design', 'E-Commerce', 'Responsive']
+  },
+  {
+    title: 'Corporate Branding',
+    description: 'Professional brand identity for enterprise clients',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/9293bd86-3372-11f1-94d1-0242ac110002-ijcdvceAwyJd6KMlYpsU9.jpg',
+    tags: ['Branding', 'Corporate', 'Design']
+  },
+];
+---
+
+<Layout title="Gallery - Portfolio & Projects" description="Explore my collection of web design, branding, and digital marketing projects.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
+        Gallery
+      </h1>
+      <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+        Explore our portfolio of creative projects and design work.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery with Advanced Filtering -->
+  <section id="gallery" class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <PortfolioFilter client:visible projects={portfolioProjects} />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Interested in working together?</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Let's create something amazing for your business. Get in touch today.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/index#contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5">
+          Start Your Project
+        </a>
+        <a href="/pricing" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+          View Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

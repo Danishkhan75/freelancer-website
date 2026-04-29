@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const caseStudies = [
+  {
+    id: 1,
+    title: 'E-Commerce Platform Transformation',
+    category: 'Web Design',
+    client: 'TechRetail Inc.',
+    challenge: 'Outdated website causing customer drop-offs and low conversion rates',
+    solution: 'Complete redesign with modern UI/UX, optimized checkout flow, and mobile responsiveness',
+    results: {
+      conversionIncrease: '145%',
+      trafficIncrease: '320%',
+      avgOrderValue: '₹8,500',
+      clientSatisfaction: '98%'
+    },
+    timeline: '4 months',
+    services: ['Web Design', 'UX Research', 'Frontend Development'],
+    testimonial: 'This freelancer transformed our online business. The new site is beautiful and converts like crazy.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/926d2e22-3372-11f1-a260-0242ac110002-4O0OqvA2jJQuqH4KciKO4.jpg'
+  },
+  {
+    id: 2,
+    title: 'Brand Identity for Tech Startup',
+    category: 'Branding',
+    client: 'InnovateLabs',
+    challenge: 'New startup needed complete brand identity to stand out in competitive market',
+    solution: 'Created comprehensive brand strategy, visual identity, and complete design system',
+    results: {
+      mediaValue: '₹25,00,000',
+      brandRecognition: '87%',
+      partnershipDeals: '5+',
+      clientSatisfaction: '99%'
+    },
+    timeline: '3 months',
+    services: ['Branding', 'Logo Design', 'Design System'],
+    testimonial: 'They created a brand identity that perfectly captures our vision and has been instrumental in our success.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/923c9d87-3372-11f1-9860-0242ac110002-PloN_j4CbsamoKAIg5c5I.jpg'
+  },
+  {
+    id: 3,
+    title: 'Digital Marketing Campaign Launch',
+    category: 'Digital Marketing',
+    client: 'Fashion Forward Co.',
+    challenge: 'Low social media engagement and brand awareness',
+    solution: 'Comprehensive digital marketing strategy with content creation and campaign management',
+    results: {
+      followers: '50K+',
+      engagement: '8.5%',
+      leads: '230+',
+      clientSatisfaction: '96%'
+    },
+    timeline: '2 months',
+    services: ['Social Media', 'Content Strategy', 'Campaign Design'],
+    testimonial: 'The campaign exceeded all expectations. Our social presence grew dramatically!',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/927123d8-3372-11f1-8a83-0242ac110002-kDbKJwF0Q2AEweVHCG64P.jpg'
+  },
+  {
+    id: 4,
+    title: 'Mobile App UI/UX Design',
+    category: 'Mobile Design',
+    client: 'FitnessPro App',
+    challenge: 'Complex features needed intuitive mobile interface design',
+    solution: 'User-centered design approach with wireframing, prototyping, and user testing',
+    results: {
+      appRating: '4.8★',
+      downloads: '100K+',
+      retentionRate: '72%',
+      clientSatisfaction: '100%'
+    },
+    timeline: '5 months',
+    services: ['UI/UX Design', 'Prototyping', 'User Research'],
+    testimonial: 'The app design is beautiful and intuitive. Our users love it!',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/92611961-3372-11f1-983f-0242ac110002-YnryQJ_MK5A1pJYuDXPB4.jpg'
+  }
+];
+---
+
+<Layout title="Case Studies - Detailed Project Breakdowns" description="Explore detailed case studies and successful project outcomes.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 bg-gradient-to-br from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Case Studies
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Explore detailed breakdowns of successful projects and the real impact we've delivered for clients.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section id="case-studies" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-12">
+        {caseStudies.map((study) => (
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-12 border-b border-border last:border-b-0">
+            <!-- Image -->
+            <div class="relative h-96 rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={study.image}
+                alt={study.title}
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute top-4 left-4 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold">
+                {study.category}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-6">
+              <div>
+                <h2 class="text-3xl font-bold text-foreground mb-2">{study.title}</h2>
+                <p class="text-muted-foreground font-semibold">Client: {study.client}</p>
+              </div>
+
+              <div class="space-y-3">
+                <div>
+                  <h3 class="font-semibold text-foreground mb-2">Challenge</h3>
+                  <p class="text-muted-foreground">{study.challenge}</p>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-foreground mb-2">Solution</h3>
+                  <p class="text-muted-foreground">{study.solution}</p>
+                </div>
+              </div>
+
+              <!-- Results Grid -->
+              <div class="grid grid-cols-2 gap-4 pt-4 bg-card rounded-lg p-6 border border-border">
+                {Object.entries(study.results).map(([key, value]) => (
+                  <div>
+                    <div class="text-2xl font-bold text-primary">{value}</div>
+                    <p class="text-xs text-muted-foreground mt-1 capitalize">
+                      {key.replace(/([A-Z])/g, ' $1').trim()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Meta Info -->
+              <div class="flex flex-wrap gap-2">
+                <div class="text-sm bg-muted text-primary px-3 py-1 rounded-full">
+                  ⏱️ {study.timeline}
+                </div>
+                {study.services.map((service) => (
+                  <div class="text-sm bg-secondary/20 text-secondary-foreground px-3 py-1 rounded-full">
+                    {service}
+                  </div>
+                ))}
+              </div>
+
+              <!-- Testimonial -->
+              <blockquote class="border-l-4 border-primary pl-4 italic text-muted-foreground">
+                "{study.testimonial}"
+              </blockquote>
+
+              <a href="/contact" class="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
+                Start Your Project
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24 bg-muted">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Ready to achieve similar results?
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Let's discuss how I can help transform your project into a success story.
+        </p>
+      </div>
+      <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+        Schedule Consultation
+      </a>
+    </div>
+  </section>
+
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</Layout>

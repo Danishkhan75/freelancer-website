@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SignupForm from '../components/auth/SignupForm'
+---
+
+<Layout title="Sign Up - Freelancer Platform">
+  <main class="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-md">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Create Account</h1>
+        <p class="text-slate-600 mb-8">Join our freelance community today</p>
+
+        <SignupForm client:load />
+
+        <p class="text-center text-slate-600 text-sm mt-6">
+          Already have an account?
+          <a href="/login" class="text-primary hover:underline font-semibold">Sign in here</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @import "../styles/global.css";
+</style>

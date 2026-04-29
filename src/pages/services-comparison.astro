@@ -1,0 +1,277 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const serviceComparison = [
+  {
+    feature: 'Project Planning & Discovery',
+    basic: '✓',
+    standard: '✓',
+    premium: '✓'
+  },
+  {
+    feature: 'Design Concepts',
+    basic: '2 Concepts',
+    standard: '3-5 Concepts',
+    premium: 'Unlimited'
+  },
+  {
+    feature: 'Revision Rounds',
+    basic: '2 Rounds',
+    standard: '5 Rounds',
+    premium: 'Unlimited'
+  },
+  {
+    feature: 'Responsive Design',
+    basic: '✓',
+    standard: '✓',
+    premium: '✓'
+  },
+  {
+    feature: 'Mobile Optimization',
+    basic: '✓',
+    standard: '✓',
+    premium: '✓'
+  },
+  {
+    feature: 'SEO Optimization',
+    basic: 'Basic',
+    standard: 'Advanced',
+    premium: 'Comprehensive'
+  },
+  {
+    feature: 'Performance Optimization',
+    basic: 'Standard',
+    standard: 'Advanced',
+    premium: 'Fully Optimized'
+  },
+  {
+    feature: 'Content Creation',
+    basic: '—',
+    standard: '—',
+    premium: 'Included'
+  },
+  {
+    feature: 'Testing & QA',
+    basic: 'Basic',
+    standard: 'Comprehensive',
+    premium: 'Extensive'
+  },
+  {
+    feature: 'Deployment & Launch',
+    basic: '✓',
+    standard: '✓',
+    premium: '✓'
+  },
+  {
+    feature: 'Post-Launch Support',
+    basic: '30 Days',
+    standard: '60 Days',
+    premium: '90 Days'
+  },
+  {
+    feature: 'Priority Support',
+    basic: '—',
+    standard: '✓',
+    premium: '✓ (24/7)'
+  },
+  {
+    feature: 'Maintenance Package',
+    basic: 'Optional',
+    standard: '3 Months Free',
+    premium: '6 Months Free'
+  },
+  {
+    feature: 'Monthly Updates',
+    basic: 'Optional',
+    standard: 'Included (2)',
+    premium: 'Included (Unlimited)'
+  },
+  {
+    feature: 'Training & Documentation',
+    basic: '—',
+    standard: 'Basic',
+    premium: 'Comprehensive'
+  }
+];
+
+const packages = [
+  {
+    name: 'Basic',
+    price: '₹25,000',
+    duration: '3-4 weeks',
+    description: 'Perfect for small projects and quick turnarounds',
+    color: 'bg-blue-500/10 border-blue-500/30',
+    highlight: false
+  },
+  {
+    name: 'Standard',
+    price: '₹50,000',
+    duration: '6-8 weeks',
+    description: 'Most popular - ideal for medium projects',
+    color: 'bg-green-500/10 border-green-500/30',
+    highlight: true
+  },
+  {
+    name: 'Premium',
+    price: '₹1,00,000+',
+    duration: '8-12 weeks',
+    description: 'For complex, enterprise-level projects',
+    color: 'bg-purple-500/10 border-purple-500/30',
+    highlight: false
+  }
+];
+---
+
+<Layout title="Services Comparison - Choose Your Package" description="Compare our service packages and find the perfect fit for your project.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 bg-gradient-to-br from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Services Comparison
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Compare our packages and choose the one that best fits your project needs and budget.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Package Cards Overview -->
+  <section id="packages" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {packages.map((pkg) => (
+          <div class={`rounded-lg border-2 p-8 relative ${pkg.color} ${pkg.highlight ? 'ring-2 ring-primary/20 lg:scale-105' : ''}`}>
+            {pkg.highlight && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                  Most Popular
+                </span>
+              </div>
+            )}
+            <h3 class="text-2xl font-bold text-foreground mb-2">{pkg.name}</h3>
+            <p class="text-4xl font-bold text-primary mb-2">{pkg.price}</p>
+            <p class="text-sm text-muted-foreground mb-4">Timeline: {pkg.duration}</p>
+            <p class="text-muted-foreground mb-6">{pkg.description}</p>
+            <a href="/contact" class="inline-flex items-center justify-center w-full px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
+              Get Started
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Comparison Table -->
+  <section id="comparison" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Detailed Feature Comparison
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          See exactly what's included in each package
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b-2 border-border">
+              <th class="text-left py-4 px-4 font-semibold text-foreground">Feature</th>
+              <th class="text-center py-4 px-4 font-semibold text-foreground">Basic</th>
+              <th class="text-center py-4 px-4 font-semibold text-foreground">Standard</th>
+              <th class="text-center py-4 px-4 font-semibold text-foreground">Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            {serviceComparison.map((row, idx) => (
+              <tr class={`border-b border-border ${idx % 2 === 0 ? 'bg-muted/30' : ''} hover:bg-muted/50 transition-colors`}>
+                <td class="py-4 px-4 font-medium text-foreground">{row.feature}</td>
+                <td class="py-4 px-4 text-center text-muted-foreground">{row.basic}</td>
+                <td class="py-4 px-4 text-center text-muted-foreground">{row.standard}</td>
+                <td class="py-4 px-4 text-center text-primary font-semibold">{row.premium}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-On Services -->
+  <section id="add-ons" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Add-On Services
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Customize your package with additional services
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300">
+          <h3 class="text-lg font-bold text-foreground mb-2">Extra Revision Rounds</h3>
+          <p class="text-primary font-semibold mb-3">₹5,000 per 5 rounds</p>
+          <p class="text-muted-foreground text-sm">Additional design or content revisions beyond your package</p>
+        </div>
+
+        <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300">
+          <h3 class="text-lg font-bold text-foreground mb-2">Content Writing</h3>
+          <p class="text-primary font-semibold mb-3">₹10,000</p>
+          <p class="text-muted-foreground text-sm">Professional copywriting for your entire website</p>
+        </div>
+
+        <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300">
+          <h3 class="text-lg font-bold text-foreground mb-2">Extended Support</h3>
+          <p class="text-primary font-semibold mb-3">₹15,000 per month</p>
+          <p class="text-muted-foreground text-sm">30-day warranty extended to 90+ days</p>
+        </div>
+
+        <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300">
+          <h3 class="text-lg font-bold text-foreground mb-2">SEO Package</h3>
+          <p class="text-primary font-semibold mb-3">₹12,000</p>
+          <p class="text-muted-foreground text-sm">Comprehensive SEO optimization and analytics setup</p>
+        </div>
+
+        <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300">
+          <h3 class="text-lg font-bold text-foreground mb-2">E-Commerce Integration</h3>
+          <p class="text-primary font-semibold mb-3">₹20,000</p>
+          <p class="text-muted-foreground text-sm">Shopping cart, payment gateway, and inventory setup</p>
+        </div>
+
+        <div class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300">
+          <h3 class="text-lg font-bold text-foreground mb-2">Maintenance Retainer</h3>
+          <p class="text-primary font-semibold mb-3">₹5,000/month</p>
+          <p class="text-muted-foreground text-sm">Ongoing updates, backups, and security maintenance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="pricing-faq" class="py-16 lg:py-24 bg-gradient-to-r from-muted to-transparent">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Have Questions?
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Check our FAQ or contact us directly
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/faq" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
+          View FAQ
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

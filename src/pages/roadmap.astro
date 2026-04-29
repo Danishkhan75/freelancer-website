@@ -1,0 +1,286 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const roadmapItems = [
+  {
+    quarter: 'Q2 2026',
+    title: 'Advanced AI Integration',
+    status: 'In Progress',
+    features: [
+      'AI-powered design recommendations',
+      'Automated image optimization',
+      'Smart content suggestions'
+    ],
+    color: 'bg-blue-100 border-blue-500'
+  },
+  {
+    quarter: 'Q3 2026',
+    title: 'E-Commerce Platform',
+    status: 'Planned',
+    features: [
+      'Full e-commerce solutions',
+      'Payment gateway integrations',
+      'Inventory management system'
+    ],
+    color: 'bg-green-100 border-green-500'
+  },
+  {
+    quarter: 'Q4 2026',
+    title: 'Mobile App Development',
+    status: 'Planned',
+    features: [
+      'React Native applications',
+      'iOS & Android apps',
+      'Cross-platform solutions'
+    ],
+    color: 'bg-purple-100 border-purple-500'
+  },
+  {
+    quarter: 'Q1 2027',
+    title: 'SaaS Development',
+    status: 'Planned',
+    features: [
+      'Custom SaaS solutions',
+      'Subscription management',
+      'Multi-tenant architecture'
+    ],
+    color: 'bg-orange-100 border-orange-500'
+  },
+  {
+    quarter: 'Q2 2027',
+    title: 'Advanced Analytics',
+    status: 'Planned',
+    features: [
+      'Real-time analytics dashboards',
+      'Custom reporting tools',
+      'Data visualization'
+    ],
+    color: 'bg-pink-100 border-pink-500'
+  },
+  {
+    quarter: 'Q3 2027',
+    title: 'Enterprise Solutions',
+    status: 'Planned',
+    features: [
+      'Enterprise-grade applications',
+      'Advanced security features',
+      'Scalable infrastructure'
+    ],
+    color: 'bg-indigo-100 border-indigo-500'
+  }
+];
+
+const upcomingServices = [
+  {
+    icon: '🤖',
+    title: 'AI & Machine Learning',
+    description: 'Integrate cutting-edge AI technology into your applications for smarter automation and insights.'
+  },
+  {
+    icon: '📱',
+    title: 'Mobile Development',
+    description: 'Native and cross-platform mobile applications for iOS and Android.'
+  },
+  {
+    icon: '🏪',
+    title: 'E-Commerce Solutions',
+    description: 'Complete e-commerce platforms with payment processing and inventory management.'
+  },
+  {
+    icon: '📊',
+    title: 'Business Intelligence',
+    description: 'Advanced analytics, dashboards, and data visualization tools.'
+  },
+  {
+    icon: '🔐',
+    title: 'Enterprise Security',
+    description: 'Advanced security solutions and compliance for enterprise applications.'
+  },
+  {
+    icon: '☁️',
+    title: 'Cloud Solutions',
+    description: 'Cloud architecture design, migration, and management services.'
+  }
+];
+---
+
+<Layout title="Service Roadmap - Upcoming Features" description="Explore our plans for future services and features.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 bg-gradient-to-br from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Our Service Roadmap
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Exciting new services and features coming soon. Get a preview of what's in development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Development Timeline
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Our planned releases and new service launches
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {roadmapItems.map((item, idx) => (
+          <div class={`rounded-lg border-2 p-8 ${item.color} hover:shadow-lg transition-all duration-300`}>
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold text-foreground mb-2">{item.title}</h3>
+                <p class="text-sm text-muted-foreground">{item.quarter}</p>
+              </div>
+              <span class={`px-4 py-2 rounded-full text-sm font-semibold ${
+                item.status === 'In Progress'
+                  ? 'bg-blue-100 text-blue-700'
+                  : 'bg-gray-200 text-gray-700'
+              }`}>
+                {item.status}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {item.features.map((feature) => (
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+                  <p class="text-muted-foreground">{feature}</p>
+                </div>
+              ))}
+            </div>
+
+            {item.status === 'In Progress' && (
+              <div class="mt-4 p-3 bg-blue-100 border border-blue-500 rounded-lg">
+                <p class="text-sm text-blue-700 font-medium">
+                  ✨ This service is currently under active development and will be available soon!
+                </p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Services -->
+  <section id="upcoming" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Upcoming Services
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          New services coming to expand your options
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {upcomingServices.map((service) => (
+          <div class="bg-background rounded-lg p-6 border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300">
+            <div class="text-4xl mb-4">{service.icon}</div>
+            <h3 class="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+            <p class="text-muted-foreground mb-4">{service.description}</p>
+            <div class="flex items-center text-primary text-sm font-semibold">
+              Coming Soon →
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section id="cta" class="py-16 lg:py-24 bg-gradient-to-r from-muted to-transparent">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Want to be notified of new services?
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Subscribe to our newsletter to get updates on upcoming features and services.
+        </p>
+      </div>
+
+      <form class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto w-full">
+        <input
+          type="email"
+          placeholder="your@email.com"
+          required
+          class="flex-1 px-6 py-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+        />
+        <button
+          type="submit"
+          class="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
+        >
+          Notify Me
+        </button>
+      </form>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+          Contact About Future Services
+        </a>
+        <a href="/book-consultation" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
+          Schedule Consultation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Roadmap FAQs
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <details class="group cursor-pointer">
+          <summary class="flex items-center justify-between p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-300">
+            <h3 class="font-semibold text-foreground text-lg">When will these new services be available?</h3>
+            <svg class="w-6 h-6 text-primary transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </summary>
+          <div class="px-4 pt-2 pb-4 text-muted-foreground">
+            Timeline varies by service. See the roadmap above for estimated release dates for each service.
+          </div>
+        </details>
+
+        <details class="group cursor-pointer">
+          <summary class="flex items-center justify-between p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-300">
+            <h3 class="font-semibold text-foreground text-lg">Can I get early access to new services?</h3>
+            <svg class="w-6 h-6 text-primary transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </summary>
+          <div class="px-4 pt-2 pb-4 text-muted-foreground">
+            Yes! Contact me to express interest in early access or beta testing for new services.
+          </div>
+        </details>
+
+        <details class="group cursor-pointer">
+          <summary class="flex items-center justify-between p-4 bg-card rounded-lg border border-border hover:border-primary/50 transition-all duration-300">
+            <h3 class="font-semibold text-foreground text-lg">Will pricing change for new services?</h3>
+            <svg class="w-6 h-6 text-primary transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </summary>
+          <div class="px-4 pt-2 pb-4 text-muted-foreground">
+            Pricing will be competitive and fair. Early adopters may receive special launch pricing.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+</Layout>

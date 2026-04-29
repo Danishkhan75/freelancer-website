@@ -1,0 +1,38 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import RequiredB12HeadScripts from '../components/RequiredB12HeadScripts.astro';
+import RequiredB12FooterScripts from '../components/RequiredB12FooterScripts.astro';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Freelancer - Professional Services', description = 'Professional freelance services for your business needs.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <RequiredB12HeadScripts />
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppWidget phoneNumber="917978854373" />
+    <RequiredB12FooterScripts />
+  </body>
+</html>

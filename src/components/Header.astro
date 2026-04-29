@@ -1,0 +1,90 @@
+---
+import DarkModeToggle from './DarkModeToggle.tsx';
+
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage } = Astro.props;
+---
+
+<header class="sticky top-0 z-50 bg-background/80 backdrop-blur border-b border-border">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2 group">
+        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:shadow-lg transition-shadow">
+          <svg class="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <span class="text-xl font-bold text-foreground hidden sm:inline">Freelancer</span>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/about" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'about' ? 'text-primary' : 'text-foreground'}`}>
+          About
+        </a>
+        <a href="/#services" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'services' ? 'text-primary' : 'text-foreground'}`}>
+          Services
+        </a>
+        <a href="/case-studies" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'case-studies' ? 'text-primary' : 'text-foreground'}`}>
+          Case Studies
+        </a>
+        <a href="/gallery" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'gallery' ? 'text-primary' : 'text-foreground'}`}>
+          Gallery
+        </a>
+        <a href="/pricing" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'pricing' ? 'text-primary' : 'text-foreground'}`}>
+          Pricing
+        </a>
+        <a href="/blog" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'blog' ? 'text-primary' : 'text-foreground'}`}>
+          Blog
+        </a>
+        <a href="/roadmap" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'roadmap' ? 'text-primary' : 'text-foreground'}`}>
+          Roadmap
+        </a>
+        <div class="relative group">
+          <button class="text-sm font-medium transition-colors hover:text-primary text-foreground flex items-center gap-1">
+            More
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </button>
+          <div class="absolute right-0 mt-0 w-56 bg-background border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <a href="/services-comparison" class="block px-4 py-3 text-sm font-medium hover:bg-muted text-foreground rounded-t-lg">
+              Services Comparison
+            </a>
+            <a href="/certifications" class="block px-4 py-3 text-sm font-medium hover:bg-muted text-foreground border-t border-border">
+              Certifications & Skills
+            </a>
+            <a href="/faq" class="block px-4 py-3 text-sm font-medium hover:bg-muted text-foreground border-t border-border">
+              FAQ
+            </a>
+            <a href="/book-consultation" class="block px-4 py-3 text-sm font-medium hover:bg-muted text-foreground border-t border-border rounded-b-lg">
+              Book Consultation
+            </a>
+          </div>
+        </div>
+        <a href="/contact" class={`text-sm font-medium transition-colors hover:text-primary ${currentPage === 'contact' ? 'text-primary' : 'text-foreground'}`}>
+          Contact
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <DarkModeToggle client:idle />
+        <div class="hidden md:flex items-center gap-2">
+          <a href="/login" class="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
+            Sign In
+          </a>
+          <a href="/signup" class="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
+            Get Started
+          </a>
+        </div>
+        <button class="md:hidden p-2 rounded-lg hover:bg-muted transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

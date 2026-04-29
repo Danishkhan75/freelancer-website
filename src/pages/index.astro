@@ -1,0 +1,811 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PortfolioCard from '../components/PortfolioCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import SkillsMatrix from '../components/SkillsMatrix.tsx';
+import TestimonialCarousel from '../components/TestimonialCarousel.tsx';
+import ServiceSelector from '../components/ServiceSelector.tsx';
+
+const heroImage = 'https://cdn.b12.io/client_media/lbWYvdZ4/92e4b1b9-3372-11f1-a346-0242ac110002-tcXy6W7W7sS1aykmyPtpm.jpg';
+const profileImage = 'https://cdn.b12.io/client_media/lbWYvdZ4/9272e157-3372-11f1-88f8-0242ac110002-Oxe9-bHRXpPsWkRldXPl2.jpg';
+
+const portfolioProjects = [
+  {
+    title: 'Modern Website Design',
+    description: 'Sleek e-commerce platform with intuitive navigation and seamless checkout experience.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/92611961-3372-11f1-983f-0242ac110002-YnryQJ_MK5A1pJYuDXPB4.jpg',
+    tags: ['Web Design', 'E-Commerce'],
+  },
+  {
+    title: 'Mobile App Interface',
+    description: 'User-friendly mobile application with modern UI design and smooth interactions.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/926d2e22-3372-11f1-a260-0242ac110002-4O0OqvA2jJQuqH4KciKO4.jpg',
+    tags: ['Mobile Design', 'UI/UX'],
+  },
+  {
+    title: 'Brand Identity Design',
+    description: 'Complete branding package including logo, color palette, and design guidelines.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/923c9d87-3372-11f1-9860-0242ac110002-PloN_j4CbsamoKAIg5c5I.jpg',
+    tags: ['Branding', 'Design'],
+  },
+  {
+    title: 'Digital Marketing Campaign',
+    description: 'Creative advertising campaign with social media graphics and promotional materials.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/927123d8-3372-11f1-8a83-0242ac110002-kDbKJwF0Q2AEweVHCG64P.jpg',
+    tags: ['Marketing', 'Social Media'],
+  },
+  {
+    title: 'E-Commerce Platform',
+    description: 'Full-featured online store with product catalog, shopping cart, and payment integration.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/9256a541-3372-11f1-8d90-0242ac110002-rtQoyfkrhFR2dxiBg3Nyt.jpg',
+    tags: ['Web Design', 'E-Commerce'],
+  },
+  {
+    title: 'Business Consulting',
+    description: 'Professional presentation materials and corporate branding for Fortune 500 company.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/9293bd86-3372-11f1-94d1-0242ac110002-ijcdvceAwyJd6KMlYpsU9.jpg',
+    tags: ['Consulting', 'Design'],
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'Working with this freelancer was an absolute game-changer. The quality of work exceeded our expectations, and the communication was exceptional throughout the project.',
+    author: 'Sarah Johnson',
+    role: 'CEO, Tech Startup',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/92506765-3372-11f1-833b-0242ac110002-3rjR2oJM6W1p7JhoTaBd2.jpg',
+  },
+  {
+    quote: 'Professional, reliable, and truly talented. This freelancer delivered exactly what we needed on time and within budget. Highly recommended!',
+    author: 'Michael Chen',
+    role: 'Marketing Director, Enterprise Co.',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/9272b09a-3372-11f1-85de-0242ac110002-26RGZxYUF_mEpBiWHwJx1.jpg',
+  },
+  {
+    quote: 'Exceptional attention to detail and a deep understanding of our business needs. This freelancer is a true partner in success.',
+    author: 'Emily Rodriguez',
+    role: 'Product Manager, Digital Agency',
+    image: 'https://cdn.b12.io/client_media/lbWYvdZ4/9258786c-3372-11f1-b5e6-0242ac110002-UL2Q_IlL8f3Vyt7zfPDD9.jpg',
+  },
+];
+
+const services = [
+  {
+    title: 'Web Design & Development',
+    description: 'Create stunning, responsive websites that convert visitors into clients.',
+    benefits: [
+      'Responsive design for all devices',
+      'Fast loading times and SEO optimization',
+      'Modern, clean aesthetics',
+      'User-focused interface design',
+      'Mobile-first approach',
+      'Performance optimization',
+    ],
+    price: '₹25,000 - ₹1,00,000',
+    deliveryTime: '2-6 weeks',
+  },
+  {
+    title: 'UI/UX Design',
+    description: 'Design intuitive user experiences that delight and engage your audience.',
+    benefits: [
+      'User research and testing',
+      'Wireframing and prototyping',
+      'Interactive design solutions',
+      'Brand consistency across touchpoints',
+      'Accessibility compliance',
+      'Design system creation',
+    ],
+    price: '₹15,000 - ₹75,000',
+    deliveryTime: '1-4 weeks',
+  },
+  {
+    title: 'Branding & Identity',
+    description: 'Build a distinctive brand that stands out from the competition.',
+    benefits: [
+      'Logo design and brand strategy',
+      'Color palette and typography',
+      'Brand guidelines and documentation',
+      'Complete visual identity system',
+      'Brand voice and messaging',
+      'Marketing collateral design',
+    ],
+    price: '₹20,000 - ₹80,000',
+    deliveryTime: '2-5 weeks',
+  },
+  {
+    title: 'Digital Marketing',
+    description: 'Boost your online presence with strategic marketing solutions.',
+    benefits: [
+      'Social media campaign design',
+      'Content strategy and creation',
+      'Ad design and optimization',
+      'Performance analytics and reporting',
+      'Campaign management',
+      'Growth strategy',
+    ],
+    price: '₹10,000 - ₹60,000/month',
+    deliveryTime: 'Ongoing',
+  },
+  {
+    title: 'Consultation & Strategy',
+    description: 'Get expert guidance on digital strategy and business transformation.',
+    benefits: [
+      'Business analysis and planning',
+      'Technology recommendations',
+      'Process optimization',
+      'Ongoing strategic support',
+      'Market research',
+      'Competitive analysis',
+    ],
+    price: '₹5,000 - ₹15,000/hour',
+    deliveryTime: 'Flexible',
+  },
+  {
+    title: 'Copywriting & Content',
+    description: 'Craft compelling copy that communicates your value proposition.',
+    benefits: [
+      'Website copy and messaging',
+      'Blog posts and articles',
+      'Email marketing content',
+      'SEO-optimized writing',
+      'Social media content',
+      'Case studies and whitepapers',
+    ],
+    price: '₹5,000 - ₹50,000',
+    deliveryTime: '1-3 weeks',
+  },
+];
+---
+
+<Layout title="Freelancer - Professional Services" description="Professional freelance services for your business needs.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent -z-10"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6 animate-fade-up">
+          <div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-4">
+              Elevate Your Brand with Professional Freelance Services
+            </h1>
+            <p class="text-lg text-muted-foreground leading-relaxed">
+              Trusted by companies worldwide. We bring expertise, creativity, and precision to every project.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5">
+              Request a Consultation
+            </a>
+            <a href="/gallery" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+              View Gallery
+            </a>
+          </div>
+        </div>
+
+        <div class="relative h-96 lg:h-full min-h-96 rounded-2xl overflow-hidden shadow-2xl animate-fade-up" style="animation-delay: 0.1s">
+          <img
+            src={heroImage}
+            alt="Freelance work illustration"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">About Our Team</h2>
+            <p class="text-muted-foreground leading-relaxed mb-4">
+              We are Danish Khan, Md Maruf Alam, and Jaya Singh - three passionate freelancers pursuing B.Tech from Lovely Professional University, currently in our 2nd year.
+            </p>
+            <p class="text-muted-foreground leading-relaxed mb-4">
+              With 2+ years of combined experience in digital design and development, we've successfully completed 30+ projects with 100% client satisfaction. We're committed to delivering beautiful, functional solutions that exceed expectations.
+            </p>
+            <p class="text-muted-foreground leading-relaxed">
+              Our philosophy focuses on collaboration, clarity, and quality. We believe the best work happens when clients and designers work as true partners to transform visions into reality.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 pt-4">
+            <div class="bg-primary/10 rounded-lg p-6 border border-primary/20">
+              <div class="text-3xl font-bold text-primary mb-2">2+</div>
+              <p class="text-sm text-muted-foreground">Years Experience</p>
+            </div>
+            <div class="bg-primary/10 rounded-lg p-6 border border-primary/20">
+              <div class="text-3xl font-bold text-primary mb-2">30+</div>
+              <p class="text-sm text-muted-foreground">Projects Completed</p>
+            </div>
+            <div class="bg-primary/10 rounded-lg p-6 border border-primary/20">
+              <div class="text-3xl font-bold text-primary mb-2">100%</div>
+              <p class="text-sm text-muted-foreground">Client Satisfaction</p>
+            </div>
+            <div class="bg-primary/10 rounded-lg p-6 border border-primary/20">
+              <div class="text-3xl font-bold text-primary mb-2">LPU</div>
+              <p class="text-sm text-muted-foreground">2nd Year B.Tech</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src={profileImage}
+            alt="Professional profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Services & Solutions</h2>
+        <p class="text-lg text-muted-foreground max-w-3xl mx-auto">
+          Comprehensive services tailored to your business needs. Click on any service to explore detailed information, pricing, and what's included.
+        </p>
+      </div>
+
+      <ServiceSelector client:visible services={services} />
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Portfolio</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          A showcase of past work, demonstrating skills and the quality of services provided through visuals and descriptions of completed projects.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {portfolioProjects.map((project) => (
+          <PortfolioCard
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            tags={project.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section with Carousel -->
+  <section id="testimonials" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Testimonials</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Positive feedback and success stories from previous clients establishing social proof.
+        </p>
+      </div>
+
+      <TestimonialCarousel client:visible testimonials={testimonials} />
+    </div>
+  </section>
+
+  <!-- Trust & Credentials Section -->
+  <section id="trust" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Clients Trust Me</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Proven track record with measurable results and industry recognition.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Trust Item 1 -->
+        <div class="bg-background rounded-lg border border-border p-6 text-center space-y-3 hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-foreground">Quality Assured</h3>
+          <p class="text-sm text-muted-foreground">100% satisfaction guarantee with rigorous quality checks</p>
+        </div>
+
+        <!-- Trust Item 2 -->
+        <div class="bg-background rounded-lg border border-border p-6 text-center space-y-3 hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-foreground">On-Time Delivery</h3>
+          <p class="text-sm text-muted-foreground">Consistent track record of meeting deadlines</p>
+        </div>
+
+        <!-- Trust Item 3 -->
+        <div class="bg-background rounded-lg border border-border p-6 text-center space-y-3 hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-foreground">Secure & Confidential</h3>
+          <p class="text-sm text-muted-foreground">Your data and projects are always protected</p>
+        </div>
+
+        <!-- Trust Item 4 -->
+        <div class="bg-background rounded-lg border border-border p-6 text-center space-y-3 hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-foreground">Expert Support</h3>
+          <p class="text-sm text-muted-foreground">24/7 responsive support throughout projects</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section id="newsletter" class="py-16 lg:py-24 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Stay Updated</h2>
+          <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Subscribe to our newsletter for latest insights on freelancing, design trends, and industry tips.
+          </p>
+        </div>
+
+        <form class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto w-full">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            required
+            class="flex-1 px-6 py-4 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+          />
+          <button
+            type="submit"
+            class="px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </form>
+
+        <p class="text-sm text-muted-foreground">
+          No spam, unsubscribe anytime. I respect your privacy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Process</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          How we bring your vision to life through a strategic and collaborative approach.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="relative">
+          <div class="bg-primary/10 border-2 border-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-primary">1</span>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground text-center mb-3">Discovery</h3>
+          <p class="text-sm text-muted-foreground text-center">
+            Understanding your goals, target audience, and project requirements through in-depth consultation.
+          </p>
+          <div class="hidden md:block absolute top-24 right-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+        </div>
+
+        <div class="relative">
+          <div class="bg-primary/10 border-2 border-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-primary">2</span>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground text-center mb-3">Strategy</h3>
+          <p class="text-sm text-muted-foreground text-center">
+            Developing a comprehensive strategy and creating wireframes, mockups, and technical specifications.
+          </p>
+          <div class="hidden md:block absolute top-24 right-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+        </div>
+
+        <div class="relative">
+          <div class="bg-primary/10 border-2 border-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-primary">3</span>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground text-center mb-3">Design & Build</h3>
+          <p class="text-sm text-muted-foreground text-center">
+            Creating beautiful, functional designs and building solutions that exceed expectations.
+          </p>
+          <div class="hidden md:block absolute top-24 right-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+        </div>
+
+        <div class="relative">
+          <div class="bg-primary/10 border-2 border-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-primary">4</span>
+          </div>
+          <h3 class="text-lg font-semibold text-foreground text-center mb-3">Launch & Support</h3>
+          <p class="text-sm text-muted-foreground text-center">
+            Launching your project and providing ongoing support to ensure continued success.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix Section -->
+  <section id="skills" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Skills & Expertise</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          A comprehensive overview of our technical skills and proficiency levels across multiple disciplines.
+        </p>
+      </div>
+      <SkillsMatrix client:visible />
+    </div>
+  </section>
+
+  <!-- Client Results Section -->
+  <section id="results" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Client Success Stories</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Real results from real clients. See how I've helped businesses succeed.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Result 1 -->
+        <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20 p-8 space-y-4">
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-bold text-primary">45%</span>
+            <span class="text-muted-foreground">Increase</span>
+          </div>
+          <h3 class="font-semibold text-foreground text-lg">Website Traffic</h3>
+          <p class="text-sm text-muted-foreground">
+            Optimized digital presence led to 45% surge in organic traffic within 3 months.
+          </p>
+        </div>
+
+        <!-- Result 2 -->
+        <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20 p-8 space-y-4">
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-bold text-primary">3x</span>
+            <span class="text-muted-foreground">More</span>
+          </div>
+          <h3 class="font-semibold text-foreground text-lg">Lead Generation</h3>
+          <p class="text-sm text-muted-foreground">
+            Strategic redesign tripled qualified leads and improved conversion rates.
+          </p>
+        </div>
+
+        <!-- Result 3 -->
+        <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl border border-primary/20 p-8 space-y-4">
+          <div class="flex items-baseline gap-2">
+            <span class="text-4xl font-bold text-primary">₹50L+</span>
+            <span class="text-muted-foreground">Revenue</span>
+          </div>
+          <h3 class="font-semibold text-foreground text-lg">Client Growth</h3>
+          <p class="text-sm text-muted-foreground">
+            Helped clients generate over 50 lakhs in additional revenue through design.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advanced Features Section -->
+  <section id="features" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Advanced Capabilities</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Comprehensive solutions tailored to your specific needs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Feature Group 1 -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-semibold text-foreground mb-8">Design Excellence</h3>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-foreground mb-1">User-Centered Design</h4>
+              <p class="text-sm text-muted-foreground">Designs that prioritize user experience and engagement</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-foreground mb-1">Responsive Implementation</h4>
+              <p class="text-sm text-muted-foreground">Perfect across all devices and screen sizes</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-foreground mb-1">Performance Optimized</h4>
+              <p class="text-sm text-muted-foreground">Lightning-fast loading times and smooth interactions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Group 2 -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-semibold text-foreground mb-8">Business Results</h3>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-foreground mb-1">Conversion Focused</h4>
+              <p class="text-sm text-muted-foreground">Strategic design that drives measurable business growth</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-foreground mb-1">SEO Optimized</h4>
+              <p class="text-sm text-muted-foreground">Built for search engines and user discovery</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="flex-shrink-0">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-foreground mb-1">Scalable Solutions</h4>
+              <p class="text-sm text-muted-foreground">Flexible designs that grow with your business</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee Section -->
+  <section id="guarantee" class="py-16 lg:py-24 bg-gradient-to-br from-primary/5 to-primary/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="bg-background rounded-xl border-2 border-primary/30 p-10 lg:p-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Guarantee</h2>
+        <p class="text-lg text-muted-foreground mb-8">
+          Not completely satisfied? I offer a hassle-free revision policy to ensure you're 100% happy with the results. Your success is my success.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="space-y-2">
+            <div class="text-3xl font-bold text-primary">∞</div>
+            <h3 class="font-semibold text-foreground">Unlimited Revisions</h3>
+            <p class="text-sm text-muted-foreground">Until you're completely satisfied</p>
+          </div>
+          <div class="space-y-2">
+            <div class="text-3xl font-bold text-primary">✓</div>
+            <h3 class="font-semibold text-foreground">Quality Promise</h3>
+            <p class="text-sm text-muted-foreground">Premium work every single time</p>
+          </div>
+          <div class="space-y-2">
+            <div class="text-3xl font-bold text-primary">→</div>
+            <h3 class="font-semibold text-foreground">Fast Turnaround</h3>
+            <p class="text-sm text-muted-foreground">Quick delivery without compromise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 lg:py-24 bg-gradient-to-br from-primary/5 via-background to-primary/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Simple Process</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          From consultation to delivery, here's how we work together to bring your vision to life.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="bg-card rounded-xl border-2 border-primary p-6 mb-6">
+            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-lg mb-4">
+              1
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2">Consultation</h3>
+            <p class="text-sm text-muted-foreground">
+              Free initial consultation to understand your needs and goals.
+            </p>
+          </div>
+          <div class="hidden md:block absolute top-24 right-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative">
+          <div class="bg-card rounded-xl border-2 border-primary/30 p-6 mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary font-bold text-lg mb-4">
+              2
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2">Planning</h3>
+            <p class="text-sm text-muted-foreground">
+              Detailed project plan and timeline with clear deliverables.
+            </p>
+          </div>
+          <div class="hidden md:block absolute top-24 right-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative">
+          <div class="bg-card rounded-xl border-2 border-primary/30 p-6 mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary font-bold text-lg mb-4">
+              3
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2">Execution</h3>
+            <p class="text-sm text-muted-foreground">
+              Regular updates and collaboration throughout the project.
+            </p>
+          </div>
+          <div class="hidden md:block absolute top-24 right-0 w-1/2 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative">
+          <div class="bg-card rounded-xl border-2 border-primary/30 p-6 mb-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary font-bold text-lg mb-4">
+              4
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2">Launch & Support</h3>
+            <p class="text-sm text-muted-foreground">
+              Delivery and ongoing support to ensure your success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick CTA Section -->
+  <section id="quick-cta" class="py-16 lg:py-24 bg-gradient-to-r from-primary/10 to-primary/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Ready to Start?</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Check out our pricing and portfolio to find the perfect fit for your project.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+        <a href="/pricing" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5">
+          View Pricing (₹)
+        </a>
+        <a href="/gallery" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+          View Gallery
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-all duration-300">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section (CTA) -->
+  <section id="contact" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+        <p class="text-lg text-muted-foreground">
+          Ready to start your project? Let's discuss how we can help bring your vision to life.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+        <a href="mailto:khandanish0503@gmail.com" class="flex items-center space-x-3 px-6 py-4 bg-background rounded-lg border border-border hover:shadow-lg transition-all duration-300">
+          <svg class="w-6 h-6 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <div>
+            <div class="text-sm text-muted-foreground">Email</div>
+            <div class="font-semibold text-foreground">khandanish0503@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+917978854373" class="flex items-center space-x-3 px-6 py-4 bg-background rounded-lg border border-border hover:shadow-lg transition-all duration-300">
+          <svg class="w-6 h-6 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          <div>
+            <div class="text-sm text-muted-foreground">Phone</div>
+            <div class="font-semibold text-foreground">+91 79788 54373</div>
+          </div>
+        </a>
+        <a href="mailto:mdmarufalam315@gmail.com" class="flex items-center space-x-3 px-6 py-4 bg-background rounded-lg border border-border hover:shadow-lg transition-all duration-300">
+          <svg class="w-6 h-6 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <div>
+            <div class="text-sm text-muted-foreground">Email</div>
+            <div class="font-semibold text-foreground">mdmarufalam315@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+917258032880" class="flex items-center space-x-3 px-6 py-4 bg-background rounded-lg border border-border hover:shadow-lg transition-all duration-300">
+          <svg class="w-6 h-6 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          <div>
+            <div class="text-sm text-muted-foreground">Support</div>
+            <div class="font-semibold text-foreground">+91 72580 32880</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5">
+          View Full Contact Page
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-up {
+      animation: fade-up 0.6s ease-out;
+    }
+  </style>
+</Layout>

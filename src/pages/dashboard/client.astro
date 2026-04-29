@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import ClientDashboard from '../../components/dashboard/ClientDashboard'
+---
+
+<Layout title="Client Dashboard">
+  <ClientDashboard client:load />
+</Layout>
+
+<style>
+  @import "../../styles/global.css";
+</style>

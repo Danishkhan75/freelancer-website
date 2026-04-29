@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const certifications = [
+  {
+    title: 'Advanced Web Design',
+    issuer: 'Google Digital Academy',
+    date: '2023',
+    category: 'Web Design',
+    icon: '🎓'
+  },
+  {
+    title: 'UI/UX Design Certification',
+    issuer: 'Interaction Design Foundation',
+    date: '2022',
+    category: 'Design',
+    icon: '🎨'
+  },
+  {
+    title: 'React Developer Certification',
+    issuer: 'Meta (Facebook) Education',
+    date: '2023',
+    category: 'Development',
+    icon: '⚛️'
+  },
+  {
+    title: 'Digital Marketing Specialist',
+    issuer: 'HubSpot Academy',
+    date: '2022',
+    category: 'Marketing',
+    icon: '📊'
+  },
+  {
+    title: 'UX Research Professional',
+    issuer: 'Nielsen Norman Group',
+    date: '2023',
+    category: 'Research',
+    icon: '🔍'
+  },
+  {
+    title: 'Accessibility Specialist (WCAG)',
+    issuer: 'International Association of Accessibility Professionals',
+    date: '2023',
+    category: 'Standards',
+    icon: '♿'
+  },
+  {
+    title: 'Web Performance Optimization',
+    issuer: 'Frontend Masters',
+    date: '2022',
+    category: 'Development',
+    icon: '⚡'
+  },
+  {
+    title: 'Brand Strategy & Design',
+    issuer: 'Skillshare',
+    date: '2021',
+    category: 'Branding',
+    icon: '🏆'
+  },
+  {
+    title: 'Full Stack Web Development',
+    issuer: 'Codecademy',
+    date: '2020',
+    category: 'Development',
+    icon: '💻'
+  }
+];
+
+const skills = [
+  {
+    category: 'Design',
+    items: ['Figma', 'Adobe XD', 'Photoshop', 'Illustrator', 'Sketch', 'UI/UX Design', 'Branding', 'Design Systems']
+  },
+  {
+    category: 'Frontend Development',
+    items: ['React', 'TypeScript', 'Tailwind CSS', 'JavaScript', 'HTML/CSS', 'Next.js', 'Astro', 'Web APIs']
+  },
+  {
+    category: 'Backend Development',
+    items: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'REST APIs', 'GraphQL', 'Firebase', 'Supabase']
+  },
+  {
+    category: 'Tools & Platforms',
+    items: ['Git/GitHub', 'Vercel', 'Netlify', 'AWS', 'Docker', 'VS Code', 'Jira', 'Slack']
+  },
+  {
+    category: 'Soft Skills',
+    items: ['Project Management', 'Client Communication', 'Leadership', 'Problem Solving', 'Mentoring', 'Agile', 'Scrum', 'Presentations']
+  }
+];
+
+const awards = [
+  {
+    title: 'Best Digital Design',
+    year: '2023',
+    organization: 'Indian Design Awards'
+  },
+  {
+    title: 'Top Freelancer',
+    year: '2022',
+    organization: 'Freelance Excellence Awards'
+  },
+  {
+    title: 'Innovation in Web Design',
+    year: '2021',
+    organization: 'Tech Innovation Summit'
+  },
+  {
+    title: 'Client Choice Award',
+    year: '2022',
+    organization: 'Service Excellence Awards'
+  }
+];
+---
+
+<Layout title="Certifications & Expertise - Professional Credentials" description="Explore my certifications, skills, and professional achievements.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 bg-gradient-to-br from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Certifications & Skills
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Professional certifications and expertise across multiple disciplines ensuring quality and standards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section id="awards" class="py-16 lg:py-24 bg-gradient-to-r from-primary/5 to-primary/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        Awards & Recognition
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {awards.map((award) => (
+          <div class="bg-card rounded-lg p-6 border-2 border-primary hover:border-primary transition-all duration-300 text-center">
+            <div class="text-3xl mb-3">🏆</div>
+            <h3 class="font-bold text-foreground mb-2">{award.title}</h3>
+            <p class="text-sm text-muted-foreground mb-2">{award.organization}</p>
+            <p class="text-xs text-primary font-semibold">{award.year}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Grid -->
+  <section id="certifications" class="py-16 lg:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        Professional Certifications
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {certifications.map((cert) => (
+          <div class="bg-card rounded-lg p-6 border border-border hover:shadow-lg hover:border-primary transition-all duration-300">
+            <div class="flex items-start justify-between mb-4">
+              <div class="text-4xl">{cert.icon}</div>
+              <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">
+                {cert.date}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-foreground mb-2">{cert.title}</h3>
+            <p class="text-sm text-muted-foreground mb-3">{cert.issuer}</p>
+            <span class="inline-block text-xs bg-secondary/20 text-secondary-foreground px-3 py-1 rounded-full">
+              {cert.category}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Matrix -->
+  <section id="skills" class="py-16 lg:py-24 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        Technical Skills & Expertise
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {skills.map((skillGroup) => (
+          <div>
+            <h3 class="text-xl font-bold text-foreground mb-4 pb-2 border-b-2 border-primary">
+              {skillGroup.category}
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              {skillGroup.items.map((skill) => (
+                <span class="px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium hover:bg-primary/20 transition-colors duration-300">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section id="experience" class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+        Professional Journey
+      </h2>
+      <div class="space-y-8">
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 bg-primary rounded-full border-4 border-card"></div>
+            <div class="w-1 h-24 bg-primary/30 my-2"></div>
+          </div>
+          <div class="pt-2">
+            <h3 class="text-xl font-bold text-foreground">Senior Freelancer</h3>
+            <p class="text-sm text-muted-foreground mb-2">2019 - Present</p>
+            <p class="text-muted-foreground">
+              Established as a trusted freelancer with 150+ completed projects and a strong portfolio of successful client engagements.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 bg-primary rounded-full border-4 border-card"></div>
+            <div class="w-1 h-24 bg-primary/30 my-2"></div>
+          </div>
+          <div class="pt-2">
+            <h3 class="text-xl font-bold text-foreground">Full Stack Developer</h3>
+            <p class="text-sm text-muted-foreground mb-2">2017 - 2019</p>
+            <p class="text-muted-foreground">
+              Worked as a full stack developer for a tech startup, building web applications and leading front-end development.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 bg-primary rounded-full border-4 border-card"></div>
+            <div class="w-1 h-24 bg-primary/30 my-2"></div>
+          </div>
+          <div class="pt-2">
+            <h3 class="text-xl font-bold text-foreground">UI/UX Designer</h3>
+            <p class="text-sm text-muted-foreground mb-2">2015 - 2017</p>
+            <p class="text-muted-foreground">
+              Started career as a UI/UX designer, focusing on user research and creating intuitive digital experiences.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-4 h-4 bg-primary rounded-full border-4 border-card"></div>
+          </div>
+          <div class="pt-2">
+            <h3 class="text-xl font-bold text-foreground">Degree in Computer Science</h3>
+            <p class="text-sm text-muted-foreground mb-2">2011 - 2015</p>
+            <p class="text-muted-foreground">
+              Graduated with honors from a leading university with focus on web technologies and software development.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Credibility -->
+  <section class="py-16 lg:py-24 bg-gradient-to-r from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Why Trust My Expertise?
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary mb-2">8+</div>
+          <p class="text-muted-foreground">Years of Experience</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary mb-2">150+</div>
+          <p class="text-muted-foreground">Projects Completed</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary mb-2">100%</div>
+          <p class="text-muted-foreground">Client Satisfaction</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl font-bold text-primary mb-2">15+</div>
+          <p class="text-muted-foreground">Certifications & Awards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

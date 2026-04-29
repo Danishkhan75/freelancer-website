@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const faqs = [
+  {
+    category: 'Services',
+    questions: [
+      {
+        q: 'What services do you offer?',
+        a: 'I offer a comprehensive range of services including Web Design & Development, UI/UX Design, Branding & Identity, Digital Marketing, Consultation & Strategy, and Copywriting & Content.'
+      },
+      {
+        q: 'Do you offer customized packages?',
+        a: 'Yes! I create customized packages tailored to your specific needs and budget. Contact me to discuss your requirements and get a personalized proposal.'
+      },
+      {
+        q: 'Can you work with my existing design?',
+        a: 'Absolutely. I can build upon your existing designs or start fresh. I\'m flexible and work with your vision and brand guidelines.'
+      }
+    ]
+  },
+  {
+    category: 'Pricing & Payment',
+    questions: [
+      {
+        q: 'What are your pricing models?',
+        a: 'I offer project-based pricing, hourly rates, and retainer packages. Pricing varies based on complexity and scope. Visit the pricing page for details.'
+      },
+      {
+        q: 'Do you offer payment plans?',
+        a: 'Yes, I offer flexible payment plans for larger projects. Typically, projects are billed 50% upfront and 50% upon completion, with milestone payments for longer engagements.'
+      },
+      {
+        q: 'What payment methods do you accept?',
+        a: 'I accept bank transfers, UPI, credit cards, and digital wallets. All payments are secure and processed through trusted payment gateways.'
+      }
+    ]
+  },
+  {
+    category: 'Process & Timeline',
+    questions: [
+      {
+        q: 'What is your typical project timeline?',
+        a: 'Timelines vary based on project complexity. Simple projects take 1-2 weeks, while larger ones can take 2-3 months. I provide detailed timelines during the consultation phase.'
+      },
+      {
+        q: 'How do you handle revisions?',
+        a: 'I include revision rounds in all packages. The number depends on your plan. Additional revisions beyond the included rounds are available at a discounted hourly rate.'
+      },
+      {
+        q: 'Can you meet tight deadlines?',
+        a: 'I prioritize my workload to meet deadlines. For urgent projects, I offer expedited services with premium pricing. Contact me to discuss your timeline.'
+      }
+    ]
+  },
+  {
+    category: 'Communication & Support',
+    questions: [
+      {
+        q: 'How do you communicate with clients?',
+        a: 'I maintain regular communication through email, phone, WhatsApp, and video calls. I provide weekly updates on project progress and am available for questions.'
+      },
+      {
+        q: 'What support is included after project completion?',
+        a: 'All projects include 30 days of free support for bug fixes and minor adjustments. Extended support and maintenance packages are available.'
+      },
+      {
+        q: 'Are you available for ongoing support?',
+        a: 'Yes! I offer retainer packages for ongoing support, maintenance, and updates. This ensures your project stays current and performant.'
+      }
+    ]
+  },
+  {
+    category: 'Experience & Expertise',
+    questions: [
+      {
+        q: 'What is your experience level?',
+        a: 'I have 8+ years of experience in digital design and development, having completed 150+ successful projects for clients across various industries.'
+      },
+      {
+        q: 'What industries do you specialize in?',
+        a: 'I have experience working with startups, tech companies, e-commerce brands, agencies, and enterprises across diverse sectors. I\'m quick to learn new industries.'
+      },
+      {
+        q: 'Do you work with international clients?',
+        a: 'Yes! I work with clients worldwide. I\'m experienced with international project management, different time zones, and currency conversions.'
+      }
+    ]
+  },
+  {
+    category: 'Technical Questions',
+    questions: [
+      {
+        q: 'What technologies do you use?',
+        a: 'I work with modern technologies including React, Next.js, Astro, Tailwind CSS, Node.js, and more. I stay current with industry standards and best practices.'
+      },
+      {
+        q: 'Is your work responsive and mobile-friendly?',
+        a: 'Absolutely. All my work is built with mobile-first approach and is fully responsive across all devices and screen sizes.'
+      },
+      {
+        q: 'Do you provide SEO optimization?',
+        a: 'Yes, SEO optimization is a core part of my development process. I implement best practices for on-page SEO, performance optimization, and structured data.'
+      }
+    ]
+  }
+];
+---
+
+<Layout title="FAQ - Frequently Asked Questions" description="Find answers to common questions about services, pricing, and process.">
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-20 pb-12 lg:pt-32 lg:pb-20 bg-gradient-to-br from-muted to-transparent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Frequently Asked Questions
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Find answers to common questions about our services, pricing, and working process.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faqs" class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        {faqs.map((category) => (
+          <div>
+            <h2 class="text-2xl font-bold text-foreground mb-6 pb-4 border-b-2 border-primary">
+              {category.category}
+            </h2>
+            <div class="space-y-4">
+              {category.questions.map((item, idx) => (
+                <details class="group cursor-pointer" open={idx === 0}>
+                  <summary class="flex items-center justify-between p-4 bg-card rounded-lg border border-border hover:border-primary transition-all duration-300">
+                    <h3 class="font-semibold text-foreground text-lg">{item.q}</h3>
+                    <svg class="w-6 h-6 text-primary transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </summary>
+                  <div class="px-4 pt-2 pb-4 text-muted-foreground leading-relaxed">
+                    {item.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Still Have Questions -->
+  <section id="contact-cta" class="py-16 lg:py-24 bg-muted">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Didn't find your answer?
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Get in touch with me directly. I'm happy to discuss your specific needs and answer any questions.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+        <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:shadow-lg transition-all duration-300">
+          Contact Me
+        </a>
+        <a href="tel:+917978854373" class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-muted transition-all duration-300">
+          Call Now: +91 79788 54373
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    details[open] summary {
+      background-color: var(--color-muted);
+      border-color: var(--color-primary);
+    }
+  </style>
+</Layout>

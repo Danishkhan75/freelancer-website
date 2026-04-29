@@ -1,0 +1,51 @@
+ ---
+import b12Context from '../b12Context.json'
+
+const canonicalUrl = `${b12Context.website_url.replace(/\/$/, '')}${Astro.url.pathname}`
+---
+
+<link rel="canonical" href={canonicalUrl} />
+<script is:inline define:vars={{ clientUid: b12Context.client_uid, productUrl: b12Context.product_url }}>
+  window.__CLIENT_UID__ = clientUid
+  window.__PRODUCT_URL__ = productUrl
+</script>
+
+<script
+  is:inline
+  define:vars={{
+    previewFrameScriptUrl: b12Context.preview_frame_script,
+    debug: b12Context.debug,
+  }}
+>
+  ;(function () {
+    if (window.self === window.top) {
+      if (debug) {
+        console.log('Site Builder: is not an iframe. Exit.')
+      }
+      return
+    }
+
+    if (window.__B12_PREVIEW_FRAME_LOADED__) {
+      if (debug) {
+        console.log('Site Builder: preview script already loaded. Skip.')
+      }
+      return
+    }
+    window.__B12_PREVIEW_FRAME_LOADED__ = true
+
+    const script = document.createElement('script')
+    script.src = previewFrameScriptUrl
+    script.async = true
+    script.defer = true
+
+    script.onerror = function () {
+      console.error('Site Builder: Failed to load editor bridge.')
+    }
+
+    if (debug) {
+      console.log('Site Builder: append the preview script:', script.src)
+    }
+    document.head.appendChild(script)
+  })()
+</script>
+{b12Context.favicon && <link rel="shortcut icon" href={b12Context.favicon} />} 
