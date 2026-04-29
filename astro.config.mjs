@@ -28,16 +28,15 @@ const config = {
   }
 };
 
-const { website_url = null } = b12Context
+const siteUrl = b12Context?.website_url || "https://freelancer-website.vercel.app";
 
-if (website_url) {
-  config.integrations.push(sitemap(
-    {
-      lastmod: new Date(),
-    }
-  ));
-  config['site'] = website_url
-}
+config.site = siteUrl;
+
+config.integrations.push(
+  sitemap({
+    lastmod: new Date(),
+  })
+);
 
 // https://astro.build/config
 export default defineConfig(config)
